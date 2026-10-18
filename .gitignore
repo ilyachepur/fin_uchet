@@ -1,0 +1,49 @@
+# === Секреты и конфигурация ===
+.env
+.env.local
+.env.production
+*.pem
+*.key
+
+# === Виртуальное окружение Python ===
+venv/
+env/
+.venv/
+ENV/
+
+# === Кэши и байт-код Python ===
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# === IDE и редакторы ===
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# === Alembic (служебные файлы миграций) ===
+# Сами скрипты миграций КОММИТИТЬ НАДО!
+# Но можно игнорировать временные файлы, если они есть
+alembic/__pycache__/
+
+# === Логи и тесты ===
+logs/
+*.log
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# === Сборка и дистрибуция ===
+build/
+dist/
+*.egg-info/
+*.egg
+
+# === Jupyter Notebooks (если используешь для анализа) ===
+.ipynb_checkpoints/

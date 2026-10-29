@@ -1027,3 +1027,46 @@ button:focus-visible, input:focus-visible { outline: 3px solid rgba(47, 112, 183
 @media (prefers-reduced-motion: reduce) {
   *,*::before,*::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+
+/* ==========================================================================
+   Адаптив (добавлено в конец файла). Всё внутри @media с max-width до 1023.98px,
+   поэтому на экранах от 1024px и выше ничего не меняется.
+   ========================================================================== */
+
+/* Телефоны: до 767px */
+@media (max-width: 767px) {
+  /* Фильтры дашборда («Период», «Проекты», «Метод учёта», «Вид отчёта», «Сравнение») — в одну колонку */
+  .dashboard-filters--report { grid-template-columns: minmax(0, 1fr); }
+
+  /* Карточки «Доходы / Расходы / Налоги / Прибыль» — в одну колонку вместо горизонтальной ленты */
+  .report-summary {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    margin-inline: 0;
+    padding: 0;
+    gap: 10px;
+    overflow: visible;
+    scroll-snap-type: none;
+  }
+  .report-summary-card,
+  .report-summary-card--profit { min-width: 0; min-height: 0; }
+}
+
+/* Планшеты: от 768px до 1023px */
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  /* Карточки — в две колонки */
+  .report-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  /* Таблица операций не сжимается, а прокручивается вбок */
+  .operations-table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .operations-table { min-width: 880px; }
+}
+
+/* Шапка и кнопка «Добавить операцию»: сжимается заголовок, а не кнопки */
+@media (max-width: 1023.98px) {
+  .cabinet-header > :first-child { min-width: 0; flex: 0 1 auto; }
+  .cabinet-header h1 { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .cabinet-header__actions,
+  .cabinet-header .cabinet-primary { flex: none; }
+}
